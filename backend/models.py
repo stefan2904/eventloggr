@@ -1,3 +1,28 @@
 from django.db import models
 
-# Create your models here.
+
+class Service(models.Model):
+    name = models.CharField(max_length=255, null=False, blank=False)
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+
+class Endpoint(models.Model):
+    service = models.ForeignKey('Service')
+    url = models.CharField(max_length=255, null=False, blank=False)
+    secret = models.CharField(max_length=255, null=False, blank=False)
+
+    def __str__(self):
+        return '{} ({})'.format(self.service, self.url)
+
+
+class Logline(models.Model):
+    date = models.DateTimeField(auto_now=True)
+    identifier = models.CharField(max_length=255, unique=True, null=False, blank=False)
+    service = models.ForeignKey('Service', null=False, blank=False)
+    source = models.CharField(max_length=255, null=False, blank=False)
+    text = models.TextField(null=False, blank=False)
+
+    def __str__(self):
+        return '{}@{}:  {}'.format(self.source, self.service, self.text)
