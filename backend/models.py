@@ -26,3 +26,13 @@ class Logline(models.Model):
 
     def __str__(self):
         return '{}@{}:  {}'.format(self.source, self.service, self.text)
+
+
+class Notifier(models.Model):
+    service = models.ForeignKey('Service')
+    url = models.CharField(max_length=255, null=False, blank=False)
+    secret = models.CharField(max_length=255, null=False, blank=False)
+    last = models.IntegerField(default=-1)
+
+    def __str__(self):
+        return '{} to {}'.format(self.service, self.url)
