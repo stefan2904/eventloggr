@@ -1,14 +1,29 @@
 # eventloggr
 
-Collect (via HTTP API) loglines of services (simple script), 
-store them (in a database) 
-&amp; notify other services (for example chat bots).
+Collect loglines of services,  store them &amp; notify other services.
+
+* Collect:
+ * Provides simple HTTP endpoint (one or multiple per service)
+ * Endpoints secured by [JWT](https://jwt.io)
+ * Demo sender script in `scripts/send_data.py`
+ * For example: sensor status, build status, change in wiki, ...
+
+* Store:
+ * In a database (see [relevant Django docs](https://docs.djangoproject.com/en/1.10/ref/databases/))
+ * Nothing fancy
+ 
+* Notify
+ * Define one (or multiple) notifier per service
+ * Send out (signed) HTTP request with received data to defined url
+ * Again secured by [JWT](https://jwt.io)
+ * Trigger action somewhere else that way (webhook, test, build, alarm, chat bot, mail, ...)
 
 
 ## Install
 
 1. clone the repo
 2. run `pip install -r requirements.txt`
+
 
 ## Run
 
