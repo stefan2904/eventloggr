@@ -58,4 +58,6 @@ def push(request, target):
     except IntegrityError:
         return HttpResponseNotModified()
 
+    notifier.notify(endpoint.service, line)
+
     return HttpResponse('OK')
