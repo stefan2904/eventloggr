@@ -1,6 +1,8 @@
 # eventloggr
 
-Collect loglines of services,  store them &amp; notify other services.
+Collect loglines of services,  store them &amp; notify other services. 
+
+Build with [Django](https://www.djangoproject.com/), [requests](http://docs.python-requests.org), and [itsdangerous](https://pythonhosted.org/itsdangerous/).
 
 * Collect:
  * Provides simple HTTP endpoint (one or multiple per service)
@@ -10,6 +12,7 @@ Collect loglines of services,  store them &amp; notify other services.
 
 * Store:
  * In a database (see [relevant Django docs](https://docs.djangoproject.com/en/1.10/ref/databases/))
+ * Inspect & manipulate data via web using [Django admin](https://docs.djangoproject.com/en/1.10/ref/contrib/admin/)
  * Nothing fancy
  
 * Notify
