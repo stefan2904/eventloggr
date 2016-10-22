@@ -29,10 +29,10 @@ class Logline(models.Model):
 
 
 class Notifier(models.Model):
-    service = models.ForeignKey('Service')
+    service = models.ManyToManyField(Service)
     url = models.CharField(max_length=255, null=False, blank=False)
     secret = models.CharField(max_length=255, null=False, blank=False)
     last = models.IntegerField(default=-1)
 
     def __str__(self):
-        return '{} to {}'.format(self.service, self.url)
+        return 'to {}'.format(self.url)
