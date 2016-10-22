@@ -20,6 +20,7 @@ Build with [Django](https://www.djangoproject.com/), [requests](http://docs.pyth
  * Send out (signed) HTTP request with received data to defined url
  * Again secured by [JWT](https://jwt.io)
  * Trigger action somewhere else that way (webhook, test, build, alarm, chat bot, mail, ...)
+   * for example: [eventloggr-telegram](https://github.com/stefan2904/eventloggr-telegram)
 
 
 ## Install
