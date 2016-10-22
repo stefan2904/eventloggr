@@ -1,21 +1,13 @@
 import time
 
-import requests
-from itsdangerous import JSONWebSignatureSerializer
+from collectr import Collectr
 
 URL = 'http://127.0.0.1:8000/push/'
-
 ENDPOINT = 'tr'
-
-PAYLOAD = {'identifier': 'asdf ' + str(int(time.time())),  # make it change, because we don't store duplicates
-           'source': 'me',
-           'text': 'Something happened, again!'}
-
 KEY = 'super-secret-key'
 
-s = JSONWebSignatureSerializer(KEY)
-data = s.dumps(PAYLOAD)
-r = requests.post(URL + ENDPOINT, data={'data': data})
+c = Collectr(URL, ENDPOINT, KEY)
+r = c.send('asdf ' + str(int(time.time())), 'me', 'Es ist schon wieder was passiert.')
 
 print(r.status_code)
 print(r.text)

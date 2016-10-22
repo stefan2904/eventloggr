@@ -12,7 +12,9 @@ class Collectr:
         payload = {'identifier': identifier,
                    'source': source,
                    'text': text}
+        return self.sendPayload(payload)
 
+    def sendPayload(self, payload):
         s = JSONWebSignatureSerializer(self.key)
         data = s.dumps(payload)
-        r = requests.post(self.url + self.endpoint, data={'data': data})
+        return requests.post(self.url + self.endpoint, data={'data': data})
