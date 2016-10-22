@@ -1,12 +1,12 @@
 from itsdangerous import JSONWebSignatureSerializer
 import requests
-
+import time
 
 URL = 'http://127.0.0.1:8000/push/'
 
 ENDPOINT = 'tr'
 
-PAYLOAD = {'identifier': 'asdf2',
+PAYLOAD = {'identifier': 'asdf ' + str(int(time.time())), # make it change, because we don't store duplicates
            'source': 'me',
            'text': 'Something happened, again!'}
 
