@@ -25,7 +25,7 @@ class Logline(models.Model):
     text = models.TextField(null=False, blank=False)
 
     def __str__(self):
-        return '{}@{}:  {}'.format(self.source, self.service, self.text)
+        return '{}@{}: {}  ({})'.format(self.source, self.service, self.text, self.identifier)
 
 
 class Notifier(models.Model):
