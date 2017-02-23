@@ -32,7 +32,10 @@ class Logline(models.Model):
     text = models.TextField(null=False, blank=False)
 
     def __str__(self):
-        return '{}@{}: {}  ({})'.format(self.source, self.service, self.text, self.identifier).encode('ascii', errors='replace')
+        source = self.source.encode('ascii', errors='replace')
+        service = self.service.encode('ascii', errors='replace')
+        text = self.text.encode('ascii', errors='replace')
+        return '{}@{}: {}  ({})'.format(source, service, text, self.identifier)
 
 
 class Notifier(models.Model):
