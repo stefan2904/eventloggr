@@ -7,7 +7,7 @@ class Service(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
 
     def __str__(self):
-        return '{}'.format(self.name)
+        return '{}'.format(self.name.encode('ascii', errors='replace'))
 
 
 class Endpoint(models.Model):
@@ -33,7 +33,7 @@ class Logline(models.Model):
 
     def __str__(self):
         source = self.source.encode('ascii', errors='replace')
-        service = self.service.encode('ascii', errors='replace')
+        service = self.service
         text = self.text.encode('ascii', errors='replace')
         return '{}@{}: {}  ({})'.format(source, service, text, self.identifier)
 
