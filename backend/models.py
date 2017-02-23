@@ -26,7 +26,11 @@ class Logline(models.Model):
     """A logline of a service.
     """
     date = models.DateTimeField(auto_now=True)
-    identifier = models.CharField(max_length=255, unique=True, null=False, blank=False)
+    identifier = models.CharField(
+        max_length=255,
+        unique=True,
+        null=False,
+        blank=False)
     service = models.ForeignKey('Service', null=False, blank=False)
     source = models.CharField(max_length=255, null=False, blank=False)
     text = models.TextField(null=False, blank=False)
