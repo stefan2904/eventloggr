@@ -40,7 +40,7 @@ class Logline(models.Model):
         source = self.source.encode('ascii', errors='replace')
         service = self.service
         text = self.text.encode('ascii', errors='replace')
-        return '[{}] {}: {} '.format(service, source, text)
+        return '[{}] {}: {}       ({})'.format(service, source, text, self.timestamp)
 
 
 class Notifier(models.Model):
