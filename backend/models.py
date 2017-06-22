@@ -34,6 +34,7 @@ class Logline(models.Model):
     service = models.ForeignKey('Service', null=False, blank=False)
     source = models.CharField(max_length=255, null=False, blank=False)
     text = models.TextField(null=False, blank=False)
+    timestamp = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
         source = self.source.encode('ascii', errors='replace')
